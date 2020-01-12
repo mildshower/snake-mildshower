@@ -26,10 +26,12 @@ h1 {
 
 .snake {
   background-color: black;
+  border-radius: 2px;
 }
 
 .ghost {
   background-color: gray;
+  border-radius: 5px;
 }
 
 .food {
