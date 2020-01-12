@@ -10,6 +10,15 @@ h1 {
   border: 1px solid black;
 }
 
+#scoreBoard {
+  height: 50px;
+  width: 50px;
+  margin: 5px auto;
+  border: 1px solid black;
+  align-items: center;
+  text-align: center;
+}
+
 .cell {
   width: 8px;
   height: 8px;

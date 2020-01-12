@@ -26,6 +26,20 @@ class Direction {
   }
 }
 
+class Score {
+  constructor() {
+    this.currScore = 0;
+  }
+
+  increaseBy(increment) {
+    this.currScore += increment;
+  }
+
+  get summary() {
+    return this.currScore;
+  }
+}
+
 class Snake {
   constructor(positions, direction, type) {
     this.positions = positions.slice();
@@ -78,6 +92,10 @@ class Food {
   get location() {
     return this.position.slice();
   }
+
+  get point() {
+    return this.potential;
+  }
 }
 
 class Game {
@@ -87,6 +105,7 @@ class Game {
     this.food = initialFood;
     this.gridSize = gridSize;
     this.previousFood = new Food([0, 0], 1);
+    this.score = new Score();
   }
 
   getState() {
@@ -95,6 +114,7 @@ class Game {
     state.ghostSnake = this.ghostSnake.getState();
     state.food = { location: this.food.location };
     state.previousFood = { location: this.previousFood.location };
+    state.score = this.score.summary;
     return state;
   }
 
@@ -125,8 +145,9 @@ class Game {
     this.moveSnakes();
 
     if (this.isFoodEaten()) {
-      this.generateNewFood();
+      this.score.increaseBy(this.food.point);
       this.snake.eat();
+      this.generateNewFood();
     }
   }
 
@@ -142,8 +163,10 @@ const NUM_OF_COLS = 100;
 const NUM_OF_ROWS = 60;
 
 const GRID_ID = 'grid';
+const SCORE_PAD_ID = 'score';
 
 const getGrid = () => document.getElementById(GRID_ID);
+const getScorePad = () => document.getElementById(SCORE_PAD_ID);
 const getCellId = (colId, rowId) => colId + '_' + rowId;
 
 const getCell = (colId, rowId) =>
@@ -195,12 +218,18 @@ const eraseFood = function(food) {
   cellToClear.classList.remove('food');
 };
 
+const projectScore = function(score) {
+  const scorePad = getScorePad();
+  scorePad.innerText = score;
+};
+
 const drawGame = function(game) {
-  const { snake, ghostSnake, food, previousFood } = game.getState();
+  const { snake, ghostSnake, food, previousFood, score } = game.getState();
   renderSnake(snake);
   renderSnake(ghostSnake);
   eraseFood(previousFood);
   drawFood(food);
+  projectScore(score);
 };
 
 const handleKeyPress = (event, game) => {
@@ -231,15 +260,18 @@ const initGhostSnake = () => {
   return new Snake(ghostSnakePosition, new Direction(EAST), 'ghost');
 };
 
+const initGame = function(game) {
+  createGrids();
+  attachEventListeners(game);
+  drawGame(game);
+};
+
 const main = function() {
   const snake = initSnake();
   const ghostSnake = initGhostSnake();
   const food = new Food([50, 25], 1);
   const game = new Game(snake, ghostSnake, food, [100, 60]);
-
-  createGrids();
-  attachEventListeners(game);
-  drawGame(game);
+  initGame(game);
 
   setInterval(() => {
     game.update();
