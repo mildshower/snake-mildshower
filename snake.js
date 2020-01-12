@@ -47,7 +47,7 @@ class Snake {
 
   hasCrossedBoundary(boundary) {
     const crossedHorizontally = this.head[0] < 0 || this.head[0] > boundary[0];
-    const crossedVertically = this.head[1] < 1 || this.head[1] > boundary[1];
+    const crossedVertically = this.head[1] < 0 || this.head[1] > boundary[1];
     return crossedHorizontally || crossedVertically;
   }
 }
