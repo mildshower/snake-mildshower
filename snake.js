@@ -81,6 +81,17 @@ class Snake {
   eat() {
     this.positions.unshift(this.previousTail);
   }
+
+  hasBittenItself() {
+    const restsBody = this.positions.slice(0, this.positions.length - 1);
+    return restsBody.some(cell => areEqualCells(cell, this.head));
+  }
+
+  hasCrossedBoundary(boundary) {
+    const crossedHorizontally = this.head[0] < 0 || this.head[0] > boundary[0];
+    const crossedVertically = this.head[1] < 1 || this.head[1] > boundary[1];
+    return crossedHorizontally || crossedVertically;
+  }
 }
 
 class Food {
@@ -98,6 +109,8 @@ class Food {
   }
 }
 
+const areEqualCells = (cellA, cellB) =>
+  cellA.every((elem, indx) => elem === cellB[indx]);
 class Game {
   constructor(snake, ghostSnake, initialFood, gridSize) {
     this.snake = snake;
@@ -128,16 +141,13 @@ class Game {
   }
 
   isFoodEaten() {
-    const areEqualCells = (cellA, cellB) =>
-      cellA.every((elem, indx) => elem === cellB[indx]);
-
     return areEqualCells(this.snake.head, this.food.location);
   }
 
   generateNewFood() {
     this.previousFood = this.food;
-    const newFoodColId = Math.ceil(Math.random() * this.gridSize[0]);
-    const newFoodRowId = Math.ceil(Math.random() * this.gridSize[1]);
+    const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
+    const newFoodRowId = Math.round(Math.random() * this.gridSize[1]);
     this.food = new Food([newFoodColId, newFoodRowId], 1);
   }
 
@@ -156,6 +166,14 @@ class Game {
     if (x > 50) {
       this.ghostSnake.turnLeft();
     }
+  }
+
+  isOver() {
+    const hasSnakeBittenItself = this.snake.hasBittenItself();
+    const hasSnakeCrossedBoundary = this.snake.hasCrossedBoundary(
+      this.gridSize
+    );
+    return hasSnakeBittenItself || hasSnakeCrossedBoundary;
   }
 }
 
@@ -197,7 +215,7 @@ const eraseTail = function(snake) {
 const drawSnake = function(snake) {
   snake.location.forEach(([colId, rowId]) => {
     const cell = getCell(colId, rowId);
-    cell.classList.add(snake.species);
+    cell && cell.classList.add(snake.species);
   });
 };
 
@@ -270,15 +288,20 @@ const main = function() {
   const snake = initSnake();
   const ghostSnake = initGhostSnake();
   const food = new Food([50, 25], 1);
-  const game = new Game(snake, ghostSnake, food, [100, 60]);
+  const game = new Game(snake, ghostSnake, food, [99, 59]);
   initGame(game);
 
-  setInterval(() => {
+  const gameUpdation = setInterval(() => {
     game.update();
     drawGame(game);
+    if (game.isOver()) {
+      clearInterval(gameUpdation);
+      clearInterval(ghostSnakeMovement);
+      alert('GAME OVER');
+    }
   }, 200);
 
-  setInterval(() => {
+  const ghostSnakeMovement = setInterval(() => {
     game.guideGhostSnake();
   }, 500);
 };
