@@ -63,6 +63,10 @@ class Snake {
 
     this.positions.push([headX + deltaX, headY + deltaY]);
   }
+
+  eat() {
+    this.positions.unshift(this.previousTail);
+  }
 }
 
 class Food {
@@ -122,6 +126,7 @@ class Game {
 
     if (this.isFoodEaten()) {
       this.generateNewFood();
+      this.snake.eat();
     }
   }
 

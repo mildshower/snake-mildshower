@@ -17,6 +17,6 @@
 
 
 --DONE-- * The snake should be able to eat the food
- * The snake should grow upon eating the food
+--DONE-- * The snake should grow upon eating the food
  * The game should keep score and or each time the snake eats the food the score should be updated.
  * The game should get over when the snake either touches itself or the borders.
