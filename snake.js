@@ -63,4 +63,8 @@ class Snake {
     const crossedVertically = this.head[1] < 0 || this.head[1] > boundary[1];
     return crossedHorizontally || crossedVertically;
   }
+
+  isHeadOn(coords) {
+    return areEqualCells(this.head, coords);
+  }
 }

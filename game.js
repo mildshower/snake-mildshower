@@ -60,6 +60,10 @@ class Game {
     const hasSnakeCrossedBoundary = this.snake.hasCrossedBoundary(
       this.gridSize
     );
-    return hasSnakeBittenItself || hasSnakeCrossedBoundary;
+    const ghostSnakeLocation = this.ghostSnake.getState().location;
+    const hasTouchedGhost = ghostSnakeLocation.some(coords =>
+      this.snake.isHeadOn(coords)
+    );
+    return hasSnakeBittenItself || hasSnakeCrossedBoundary || hasTouchedGhost;
   }
 }
