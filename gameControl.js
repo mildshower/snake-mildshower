@@ -122,7 +122,7 @@ const main = function() {
     if (game.isOver()) {
       clearInterval(gameUpdation);
       clearInterval(ghostSnakeMovement);
-      alert('GAME OVER');
+      confirm('Do you want another game?') && location.reload();
     }
   }, 120);
 
