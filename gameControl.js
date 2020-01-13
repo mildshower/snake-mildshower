@@ -112,7 +112,7 @@ const initGame = function(game) {
 const main = function() {
   const snake = initSnake();
   const ghostSnake = initGhostSnake();
-  const food = new Food([50, 25], 'normalFood');
+  const food = new Food([47, 30], 'normalFood');
   const game = new Game(snake, ghostSnake, food, [99, 59]);
   initGame(game);
 
@@ -128,5 +128,5 @@ const main = function() {
 
   const ghostSnakeMovement = setInterval(() => {
     game.guideGhostSnake();
-  }, 500);
+  }, 600);
 };

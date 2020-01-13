@@ -38,6 +38,10 @@ class Game {
   update() {
     this.moveSnakes();
 
+    if (this.ghostSnake.eat(this.food)) {
+      this.generateNewFood();
+    }
+
     if (this.snake.eat(this.food)) {
       this.score.increaseBy(this.food.point);
       this.generateNewFood();
