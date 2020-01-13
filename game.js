@@ -6,7 +6,7 @@ class Game {
     this.ghostSnake = ghostSnake;
     this.food = initialFood;
     this.gridSize = gridSize;
-    this.previousFood = new Food([0, 0], 1);
+    this.previousFood = new Food([0, 0], 1, 1);
     this.score = new Score();
   }
 
@@ -37,7 +37,7 @@ class Game {
     this.previousFood = this.food;
     const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
     const newFoodRowId = Math.round(Math.random() * this.gridSize[1]);
-    this.food = new Food([newFoodColId, newFoodRowId], 1);
+    this.food = new Food([newFoodColId, newFoodRowId], 1, 1);
   }
 
   update() {
@@ -45,7 +45,7 @@ class Game {
 
     if (this.isFoodEaten()) {
       this.score.increaseBy(this.food.point);
-      this.snake.eat();
+      this.snake.eat(this.food);
       this.generateNewFood();
     }
   }

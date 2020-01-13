@@ -1,7 +1,8 @@
 class Food {
-  constructor(position, potential) {
+  constructor(position, potential, growth) {
     this.position = position.slice();
     this.potential = potential;
+    this.growth = growth;
   }
 
   get location() {
@@ -10,5 +11,9 @@ class Food {
 
   get point() {
     return this.potential;
+  }
+
+  get growthSize() {
+    return this.growth;
   }
 }

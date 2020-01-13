@@ -36,9 +36,11 @@ class Snake {
     this.positions.push([headX + deltaX, headY + deltaY]);
   }
 
-  eat() {
-    this.positions.unshift(this.previousTail);
-    this.positions.unshift(this.previousTail);
+  eat(food) {
+    const growthSize = food.growthSize;
+    for (let times = 1; times <= growthSize; times++) {
+      this.positions.unshift(this.previousTail);
+    }
   }
 
   hasBittenItself() {
