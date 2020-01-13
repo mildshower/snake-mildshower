@@ -43,7 +43,7 @@ const drawSnake = function(snake) {
 const drawFood = function(food) {
   const [colId, rowId] = food.location;
   const foodCell = getCell(colId, rowId);
-  foodCell.classList.add('food');
+  foodCell.classList.add(food.type);
 };
 
 const renderSnake = function(snake) {
@@ -54,7 +54,7 @@ const renderSnake = function(snake) {
 const eraseFood = function(food) {
   const [colId, rowId] = food.location;
   const cellToClear = getCell(colId, rowId);
-  cellToClear.classList.remove('food');
+  cellToClear.classList.remove(food.type);
 };
 
 const projectScore = function(score) {
@@ -112,7 +112,7 @@ const initGame = function(game) {
 const main = function() {
   const snake = initSnake();
   const ghostSnake = initGhostSnake();
-  const food = new Food([50, 25], 1, 1);
+  const food = new Food([50, 25], 'normalFood');
   const game = new Game(snake, ghostSnake, food, [99, 59]);
   initGame(game);
 

@@ -1,12 +1,21 @@
+const typePropertyLookup = {
+  normalFood: { potential: 1, growth: 1 },
+  specialFood: { potential: 10, growth: 0 }
+};
+
 class Food {
-  constructor(position, potential, growth) {
+  constructor(position, type) {
     this.position = position.slice();
-    this.potential = potential;
-    this.growth = growth;
+    this.potential = typePropertyLookup[type].potential;
+    this.growth = typePropertyLookup[type].growth;
+    this.type = type;
   }
 
-  get location() {
-    return this.position.slice();
+  getState() {
+    const state = {};
+    state.location = this.position.slice();
+    state.type = this.type;
+    return state;
   }
 
   get point() {

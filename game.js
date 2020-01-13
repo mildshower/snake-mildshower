@@ -6,7 +6,7 @@ class Game {
     this.ghostSnake = ghostSnake;
     this.food = initialFood;
     this.gridSize = gridSize;
-    this.previousFood = new Food([0, 0], 1, 1);
+    this.previousFood = new Food([0, 0], 'normalFood');
     this.score = new Score();
   }
 
@@ -14,8 +14,8 @@ class Game {
     const state = {};
     state.snake = this.snake.getState();
     state.ghostSnake = this.ghostSnake.getState();
-    state.food = { location: this.food.location };
-    state.previousFood = { location: this.previousFood.location };
+    state.food = this.food.getState();
+    state.previousFood = this.previousFood.getState();
     state.score = this.score.summary;
     return state;
   }
@@ -30,14 +30,14 @@ class Game {
   }
 
   isFoodEaten() {
-    return areEqualCells(this.snake.head, this.food.location);
+    return areEqualCells(this.snake.head, this.food.getState().location);
   }
 
   generateNewFood() {
     this.previousFood = this.food;
     const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
     const newFoodRowId = Math.round(Math.random() * this.gridSize[1]);
-    this.food = new Food([newFoodColId, newFoodRowId], 1, 1);
+    this.food = new Food([newFoodColId, newFoodRowId], 'normalFood');
   }
 
   update() {
