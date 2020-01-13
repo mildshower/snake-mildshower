@@ -21,6 +21,6 @@
 --DONE-- * The game should keep score and or each time the snake eats the food the score should be updated.
 --DONE-- * The game should get over when the snake either touches itself or the borders.
 
+--DONE-- * Provide a special type of food that increases the score without changing the length of the snake.
  * Give the ghost snake the ability to eat the food.
  * The game ends when your snake touches the ghost snake.
- * Provide a special type of food that increases the score without changing the length of the snake.

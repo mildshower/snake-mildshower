@@ -124,7 +124,7 @@ const main = function() {
       clearInterval(ghostSnakeMovement);
       alert('GAME OVER');
     }
-  }, 100);
+  }, 120);
 
   const ghostSnakeMovement = setInterval(() => {
     game.guideGhostSnake();

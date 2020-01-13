@@ -31,7 +31,8 @@ class Game {
     this.previousFood = this.food;
     const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
     const newFoodRowId = Math.round(Math.random() * this.gridSize[1]);
-    this.food = new Food([newFoodColId, newFoodRowId], 'normalFood');
+    let newFoodType = Math.random() > 0.9 ? 'specialFood' : 'normalFood';
+    this.food = new Food([newFoodColId, newFoodRowId], newFoodType);
   }
 
   update() {

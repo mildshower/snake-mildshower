@@ -7,12 +7,15 @@ h1 {
   display: flex;
   margin: 0 auto;
   flex-wrap: wrap;
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 0px 0px 3px 1px gray;
 }
 
 #scoreBoard {
+  display: flex;
   height: 50px;
-  width: 50px;
+  width: fit-content;
+  padding: 0 5px;
   margin: 5px auto;
   border: 1px solid black;
   align-items: center;
@@ -35,5 +38,26 @@ h1 {
 }
 
 .normalFood {
+  background-color: darkslateblue;
+  border-radius: 50%;
+}
+
+.specialFood {
+  /* background-color: rgb(145, 26, 241); */
+  animation-name: specialFoodGlow;
   background-color: red;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+  border-radius: 50%;
+}
+
+@keyframes specialFoodGlow {
+  from {
+    box-shadow: 0px 0px 3px 3px red;
+  }
+  to {
+    box-shadow: 0px 0px 1px 1px red;
+  }
 }
