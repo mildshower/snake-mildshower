@@ -1,3 +1,6 @@
+const areEqualCells = (cellA, cellB) =>
+  cellA.every((elem, indx) => elem === cellB[indx]);
+
 class Snake {
   constructor(positions, direction, type) {
     this.positions = positions.slice();
@@ -36,11 +39,18 @@ class Snake {
     this.positions.push([headX + deltaX, headY + deltaY]);
   }
 
-  eat(food) {
-    const growthSize = food.growthSize;
-    for (let times = 1; times <= growthSize; times++) {
+  grow(size) {
+    for (let times = 1; times <= size; times++) {
       this.positions.unshift(this.previousTail);
     }
+  }
+
+  eat(food) {
+    const isEdible = areEqualCells(this.head, food.getState().location);
+    if (isEdible) {
+      this.grow(food.growthSize);
+    }
+    return isEdible;
   }
 
   hasBittenItself() {

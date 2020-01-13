@@ -1,5 +1,3 @@
-const areEqualCells = (cellA, cellB) =>
-  cellA.every((elem, indx) => elem === cellB[indx]);
 class Game {
   constructor(snake, ghostSnake, initialFood, gridSize) {
     this.snake = snake;
@@ -29,10 +27,6 @@ class Game {
     this.ghostSnake.move();
   }
 
-  isFoodEaten() {
-    return areEqualCells(this.snake.head, this.food.getState().location);
-  }
-
   generateNewFood() {
     this.previousFood = this.food;
     const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
@@ -43,9 +37,8 @@ class Game {
   update() {
     this.moveSnakes();
 
-    if (this.isFoodEaten()) {
+    if (this.snake.eat(this.food)) {
       this.score.increaseBy(this.food.point);
-      this.snake.eat(this.food);
       this.generateNewFood();
     }
   }
