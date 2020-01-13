@@ -38,6 +38,7 @@ class Snake {
 
   eat() {
     this.positions.unshift(this.previousTail);
+    this.positions.unshift(this.previousTail);
   }
 
   hasBittenItself() {

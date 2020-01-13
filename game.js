@@ -52,7 +52,7 @@ class Game {
 
   guideGhostSnake() {
     const x = Math.random() * 100;
-    if (x > 50) {
+    if (x > 10) {
       this.ghostSnake.turnLeft();
     }
   }

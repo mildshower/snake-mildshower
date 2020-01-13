@@ -62,12 +62,16 @@ const projectScore = function(score) {
   scorePad.innerText = score;
 };
 
-const drawGame = function(game) {
-  const { snake, ghostSnake, food, previousFood, score } = game.getState();
-  renderSnake(snake);
-  renderSnake(ghostSnake);
+const renderFood = function(food, previousFood) {
   eraseFood(previousFood);
   drawFood(food);
+};
+
+const drawGame = function(game) {
+  const { snake, ghostSnake, food, previousFood, score } = game.getState();
+  renderFood(food, previousFood);
+  renderSnake(snake);
+  renderSnake(ghostSnake);
   projectScore(score);
 };
 
@@ -120,7 +124,7 @@ const main = function() {
       clearInterval(ghostSnakeMovement);
       alert('GAME OVER');
     }
-  }, 200);
+  }, 100);
 
   const ghostSnakeMovement = setInterval(() => {
     game.guideGhostSnake();
