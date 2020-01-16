@@ -7,8 +7,9 @@ body {
 
 #container {
   margin: 100px auto;
-  width: 800px;
+  width: 795px;
   box-shadow: inset 0px 0px 7px 1px gray;
+  background-color: rgba(41, 150, 41, 0.3);
 }
 
 #header {
@@ -16,7 +17,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid rgb(224, 224, 224);
+  background-color: rgba(41, 150, 41, 0.3);
 }
 
 #header > h1 {
@@ -29,7 +30,7 @@ body {
 }
 
 #grid {
-  width: 800px;
+  width: 795px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -42,22 +43,22 @@ body {
 }
 
 .cell {
-  width: 8px;
-  height: 8px;
+  width: 15px;
+  height:15px;
 }
 
 .snake {
-  background-color: rgb(36, 36, 36);
-  border-radius: 2px;
+  background-color: rgb(11, 61, 22);
+  border-radius: 20%;
 }
 
 .ghost {
   background-color: gray;
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 .normalFood {
-  background-color: green;
+  background-color: rgb(78, 13, 116);
   border-radius: 50%;
 }
 

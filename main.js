@@ -1,5 +1,5 @@
-const NUM_OF_COLS = 100;
-const NUM_OF_ROWS = 60;
+const NUM_OF_COLS = 53;
+const NUM_OF_ROWS = 30;
 
 const GRID_ID = 'grid';
 const SCORE_PAD_ID = 'score';
@@ -88,9 +88,9 @@ const attachEventListeners = game => {
 const getSnakeState = () => {
   const state = {};
   state.position = [
-    [40, 25],
-    [41, 25],
-    [42, 25]
+    [20, 15],
+    [21, 15],
+    [22, 15]
   ];
   state.orientation = EAST;
   return state;
@@ -99,9 +99,9 @@ const getSnakeState = () => {
 const getGhostSnakeState = () => {
   const state = {};
   state.position = [
-    [40, 30],
-    [41, 30],
-    [42, 30]
+    [20, 20],
+    [21, 20],
+    [22, 20]
   ];
   state.orientation = EAST;
   return state;
@@ -116,8 +116,8 @@ const initGame = function(game) {
 const main = function() {
   const snakeState = getSnakeState();
   const ghostSnakeState = getGhostSnakeState();
-  const foodPosition = [47, 30];
-  const boundary = [99, 59];
+  const foodPosition = [27, 20];
+  const boundary = [52, 29];
   const game = Game.createGame(snakeState, ghostSnakeState, foodPosition, boundary);
   initGame(game);
 
