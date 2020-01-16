@@ -34,6 +34,7 @@ class Game {
   moveSnakes() {
     this.snake.move();
     this.ghostSnake.move();
+    this.ghostSnake.wrap(this.gridSize);
   }
 
   generateNewFood() {
@@ -59,7 +60,7 @@ class Game {
 
   guideGhostSnake() {
     const x = Math.random() * 100;
-    if (x > 10) {
+    if (x > 70) {
       this.ghostSnake.turnLeft();
     }
   }

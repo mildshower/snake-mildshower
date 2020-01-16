@@ -67,4 +67,14 @@ class Snake {
   isHeadOn(coords) {
     return areEqualCells(this.head, coords);
   }
+
+  wrap(boundary) {
+    const maxColNo = boundary[0] + 1;
+    const maxRowNo = boundary[1] + 1;
+    const [headCol, headRow] = this.positions.pop();
+    const wrappedHeadCol = (maxColNo + headCol) % maxColNo;
+    const wrappedHeadRow = (maxRowNo + headRow) % maxRowNo;
+    const wrappedHead = [wrappedHeadCol, wrappedHeadRow];
+    this.positions.push(wrappedHead);
+  }
 }
