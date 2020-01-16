@@ -2,9 +2,6 @@
   font-family: sans-serif;
 }
 
-body {
-}
-
 #container {
   margin: 100px auto;
   width: 795px;
@@ -78,5 +75,36 @@ body {
   }
   to {
     box-shadow: 0px 0px 1px 1px red;
+  }
+}
+
+#buttonContainer {
+  margin: 0 auto;
+  width: fit-content;
+  display: none;
+}
+
+#buttonContainer > button {
+  margin: 0 10px;
+  height: 25px;
+}
+
+@media (max-width: 800px) {
+  .cell {
+    width: 7.3px;
+    height:7.3px;
+  }
+
+  #grid {
+    width: 386.9px;
+  }
+
+  #container {
+    margin: 10px auto;
+    width: 386.9px;
+  }
+
+  #buttonContainer {
+    display: block;
   }
 }
