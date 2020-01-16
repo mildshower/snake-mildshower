@@ -85,22 +85,26 @@ const attachEventListeners = game => {
   document.body.onkeydown = () => handleKeyPress(event, game);
 };
 
-const initSnake = () => {
-  const snakePosition = [
+const getSnakeState = () => {
+  const state = {};
+  state.position = [
     [40, 25],
     [41, 25],
     [42, 25]
   ];
-  return new Snake(snakePosition, new Direction(EAST), 'snake');
+  state.orientation = EAST;
+  return state;
 };
 
-const initGhostSnake = () => {
-  const ghostSnakePosition = [
+const getGhostSnakeState = () => {
+  const state = {};
+  state.position = [
     [40, 30],
     [41, 30],
     [42, 30]
   ];
-  return new Snake(ghostSnakePosition, new Direction(EAST), 'ghost');
+  state.orientation = EAST;
+  return state;
 };
 
 const initGame = function(game) {
@@ -110,23 +114,26 @@ const initGame = function(game) {
 };
 
 const main = function() {
-  const snake = initSnake();
-  const ghostSnake = initGhostSnake();
-  const food = new Food([47, 30], 'normalFood');
-  const game = new Game(snake, ghostSnake, food, [99, 59]);
+  const snakeState = getSnakeState();
+  const ghostSnakeState = getGhostSnakeState();
+  const foodPosition = [47, 30];
+  const boundary = [99, 59];
+  const game = Game.createGame(snakeState, ghostSnakeState, foodPosition, boundary);
   initGame(game);
 
-  const gameUpdation = setInterval(() => {
+  const gameUpdationInterval = setInterval(() => {
     game.update();
     drawGame(game);
     if (game.isOver()) {
-      clearInterval(gameUpdation);
-      clearInterval(ghostSnakeMovement);
-      confirm('Do you want another game?') && location.reload();
+      clearInterval(gameUpdationInterval);
+      clearInterval(ghostSnakeMovementInterval);
+      confirm('Game Over. New Game ?') && location.reload();
     }
   }, 120);
 
-  const ghostSnakeMovement = setInterval(() => {
+  const ghostSnakeMovementInterval = setInterval(() => {
     game.guideGhostSnake();
   }, 600);
 };
+
+window.onload = main;

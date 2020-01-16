@@ -1,4 +1,13 @@
 class Game {
+  static createGame(snakeState, ghostSnakeState, foodPosition, boundary) {
+    const snakeDirection = new Direction(snakeState.orientation);
+    const snake = new Snake(snakeState.position, snakeDirection, 'snake');
+    const ghostSnakeDirection = new Direction(ghostSnakeState.orientation);
+    const ghostSnake = new Snake(ghostSnakeState.position, ghostSnakeDirection, 'ghost');
+    const food = new Food(foodPosition, 'normalFood');
+    return new Game(snake, ghostSnake, food, boundary);
+  }
+
   constructor(snake, ghostSnake, initialFood, gridSize) {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
