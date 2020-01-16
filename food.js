@@ -1,13 +1,8 @@
-const typePropertyLookup = {
-  normalFood: { potential: 1, growth: 1 },
-  specialFood: { potential: 10, growth: 0 }
-};
-
 class Food {
-  constructor(position, type) {
+  constructor(position, type, potential, growth) {
     this.position = position.slice();
-    this.potential = typePropertyLookup[type].potential;
-    this.growth = typePropertyLookup[type].growth;
+    this.potential = potential;
+    this.growth = growth;
     this.type = type;
   }
 
@@ -25,4 +20,12 @@ class Food {
   get growthSize() {
     return this.growth;
   }
+}
+
+const createNormalFood = function(position) {
+  return new Food(position,'normalFood', 1, 1);
+}
+
+const createSpecialFood = function(position) {
+  return new Food(position,'specialFood', 10, 0);
 }

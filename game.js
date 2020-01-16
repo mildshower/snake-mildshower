@@ -4,7 +4,7 @@ class Game {
     const snake = new Snake(snakeState.position, snakeDirection, 'snake');
     const ghostSnakeDirection = new Direction(ghostSnakeState.orientation);
     const ghostSnake = new Snake(ghostSnakeState.position, ghostSnakeDirection, 'ghost');
-    const food = new Food(foodPosition, 'normalFood');
+    const food = createNormalFood(foodPosition);
     return new Game(snake, ghostSnake, food, boundary);
   }
 
@@ -13,7 +13,7 @@ class Game {
     this.ghostSnake = ghostSnake;
     this.food = initialFood;
     this.gridSize = gridSize;
-    this.previousFood = new Food([0, 0], 'normalFood');
+    this.previousFood = createNormalFood([0,0]);
     this.score = new Score();
   }
 
@@ -40,8 +40,8 @@ class Game {
     this.previousFood = this.food;
     const newFoodColId = Math.round(Math.random() * this.gridSize[0]);
     const newFoodRowId = Math.round(Math.random() * this.gridSize[1]);
-    let newFoodType = Math.random() > 0.9 ? 'specialFood' : 'normalFood';
-    this.food = new Food([newFoodColId, newFoodRowId], newFoodType);
+    let foodCreator = Math.random() > 0.9 ? createSpecialFood : createNormalFood;
+    this.food = foodCreator([newFoodColId, newFoodRowId]);
   }
 
   update() {

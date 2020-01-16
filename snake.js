@@ -46,7 +46,7 @@ class Snake {
   }
 
   eat(food) {
-    const isEdible = areEqualCells(this.head, food.getState().location);
+    const isEdible = this.isHeadOn(food.getState().location);
     if (isEdible) {
       this.grow(food.growthSize);
     }
