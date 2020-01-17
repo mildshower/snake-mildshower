@@ -96,7 +96,7 @@ html {
   outline: none;
 }
 
-#leftButton:hover, #rightButton:hover {
+#leftButton:active, #rightButton:active {
   background-color: rgba(41, 150, 41, 0.5);
 }
 
