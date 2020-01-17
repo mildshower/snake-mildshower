@@ -80,13 +80,15 @@
 
 #buttonContainer {
   margin: 0 auto;
-  width: fit-content;
+  /* width: fit-content; */
   /* display: none; */
+  display: flex;
 }
 
 #buttonContainer > button {
   margin: 0 10px;
-  height: 25px;
+  height: 200px;
+  flex-grow: 1;
 }
 
 @media (max-width: 800px) {
