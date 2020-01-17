@@ -89,6 +89,7 @@
   margin: 0 10px;
   height: 200px;
   flex-grow: 1;
+  width: 40vw;
   border: 1px solid black;
 }
 
