@@ -80,20 +80,16 @@
 
 #buttonContainer {
   margin: 0 auto;
-  /* width: fit-content; */
-  /* display: none; */
-  display: flex;
+  display: none;
 }
 
-#buttonContainer > div {
+#buttonContainer > button {
   margin: 0 10px;
   height: 200px;
   flex-grow: 1;
-  width: 40vw;
-  border: 1px solid black;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 600px) {
   .cell {
     width: 7.3px;
     height:7.3px;
@@ -108,7 +104,7 @@
     width: 386.9px;
   }
 
-  /* #buttonContainer {
+  #buttonContainer {
     display: block;
-  } */
+  }
 }

@@ -84,9 +84,9 @@ const handleKeyPress = (event, game) => {
 const attachEventListeners = game => {
   document.body.onkeydown = () => handleKeyPress(event, game);
   const buttonR = document.getElementById('rightButton');
-  buttonR.onmouseover = ()=>{console.log('hi');game.turnSnake('Right')};
+  buttonR.onclick = ()=>{console.log('hi');game.turnSnake('Right')};
   const buttonL = document.getElementById('leftButton');
-  buttonL.onmouseover = ()=>{game.turnSnake('Left')};
+  buttonL.onclick = ()=>{game.turnSnake('Left')};
 };
 
 const getSnakeState = () => {
