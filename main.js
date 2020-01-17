@@ -1,5 +1,5 @@
 const NUM_OF_COLS = 53;
-const NUM_OF_ROWS = 30;
+const NUM_OF_ROWS = 40;
 
 const GRID_ID = 'grid';
 const SCORE_PAD_ID = 'score';
@@ -121,7 +121,7 @@ const main = function() {
   const snakeState = getSnakeState();
   const ghostSnakeState = getGhostSnakeState();
   const foodPosition = [27, 20];
-  const boundary = [52, 29];
+  const boundary = [52, 39];
   const game = Game.createGame(snakeState, ghostSnakeState, foodPosition, boundary);
   initGame(game);
 

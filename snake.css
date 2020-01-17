@@ -7,7 +7,7 @@ html {
 }
 
 #container {
-  margin: 100px auto;
+  margin: 50px auto;
   width: 795px;
   box-shadow: inset 0px 0px 7px 1px gray;
   background-color: rgba(41, 150, 41, 0.3);
