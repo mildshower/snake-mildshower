@@ -2,6 +2,10 @@
   font-family: sans-serif;
 }
 
+html {
+  touch-action: manipulation;
+}
+
 #container {
   margin: 100px auto;
   width: 795px;
