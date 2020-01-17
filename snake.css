@@ -83,22 +83,28 @@ html {
 }
 
 #buttonContainer {
-  margin: 0 auto;
   display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
 }
 
 #buttonContainer > button {
-  margin: 0 10px;
+  margin: 0 5px;
   height: 200px;
   flex-grow: 1;
   background-color: rgba(41, 150, 41, 0.3);
   border: none;
   outline: none;
+  box-shadow: 0 0 5px gray;
+  border-radius: 2%;
 }
 
 #leftButton:active, #rightButton:active {
   background-color: rgba(41, 150, 41, 0.5);
-}
+  border: 0 0 0px transparent;
+  }
 
 @media screen and (max-width: 800px) {
   .cell {
