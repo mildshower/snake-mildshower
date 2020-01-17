@@ -91,6 +91,13 @@ html {
   margin: 0 10px;
   height: 200px;
   flex-grow: 1;
+  background-color: rgba(41, 150, 41, 0.3);
+  border: none;
+  outline: none;
+}
+
+#leftButton:hover, #rightButton:hover {
+  background-color: rgba(41, 150, 41, 0.5);
 }
 
 @media screen and (max-width: 800px) {
