@@ -85,10 +85,11 @@
   display: flex;
 }
 
-#buttonContainer > button {
+#buttonContainer > div {
   margin: 0 10px;
   height: 200px;
   flex-grow: 1;
+  border: 1px solid black;
 }
 
 @media (max-width: 800px) {
