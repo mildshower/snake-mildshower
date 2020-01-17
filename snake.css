@@ -93,22 +93,22 @@ html {
   flex-grow: 1;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .cell {
-    width: 7.3px;
-    height:7.3px;
+    width: 1.8vw;
+    height:1.8vw;
   }
 
   #grid {
-    width: 386.9px;
+    width: 95.4vw;
   }
 
   #container {
     margin: 10px auto;
-    width: 386.9px;
+    width: 95.4vw;
   }
 
   #buttonContainer {
-    display: block;
+    display: flex;
   }
 }
